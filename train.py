@@ -265,7 +265,7 @@ training_arguments = TrainingArguments(output_dir = './modelsave',
                                       logging_steps = 10,
                                       save_strategy = 'epoch',
                                       fp16 = True,
-                                      metric_for_best_model = 'recall',
+                                      metric_for_best_model = 'accuracy',
                                       optim = 'adamw_torch',
                                       report_to = 'none',
                                       load_best_model_at_end = True
@@ -276,7 +276,7 @@ trainer = Trainer(model=model,
                   train_dataset=dts['train'],
                   eval_dataset=dts['valid'],
                   compute_metrics=compute_metrics,
-                  callbacks=[EarlyStoppingCallback(early_stopping_patience=5)],
+                  callbacks=[EarlyStoppingCallback(early_stopping_patience=6)],
                  )
 
 
